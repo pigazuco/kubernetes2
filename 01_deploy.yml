@@ -61,7 +61,7 @@
     - name: start docker service
       command: systemctl start docker
 - name: DEPLOY KUBERNETES
-  hosts: kb-all
+  hosts: kube-all
   gather_facts: no
   vars:
     kubernetes_version: "1.15.11" # 1.15.11
@@ -116,7 +116,7 @@
         - firewall-cmd --permanent --add-port=6783/tcp
         - firewall-cmd --reload
 - name: CLUSTER INIT
-  hosts: kb-controller
+  hosts: kube-master
   tasks:
     - name: Download acc-provision
       get_url:
@@ -133,7 +133,7 @@
     - name: Kubernetes cluster initialization
 #      command: "kubeadm init --pod-network-cidr=1.2.192.0/23 --apiserver-advertise-address=1.2.128.11"
 #      command: "kubeadm init --pod-network-cidr 1.2.192.0/23 --apiserver-advertise-address 1.2.128.11 --service-cidr 1.2.131.0/24"
-      command: "kubeadm init --pod-network-cidr 1.2.192.0/23 --apiserver-advertise-address 1.2.128.11 --service-cidr 1.2.131.0/24 --ignore-preflight-errors=CRI"
+      command: "kubeadm init --pod-network-cidr 1.1.192.0/23 --apiserver-advertise-address 1.1.128.11 --service-cidr 1.1.131.0/24 --ignore-preflight-errors=CRI"
     - name: Variables entorno
       command: "{{item}}"
       with_items:
