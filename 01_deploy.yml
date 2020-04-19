@@ -146,7 +146,7 @@
       register: kubeadm_token
     - debug: msg="{{ kubeadm_token.stdout }}"
 - name: DEPLOY CISCO CNI
-  hosts: kb-controller
+  hosts: kube-master
   gather_facts: no
   tasks:
     - pause:
@@ -160,7 +160,7 @@
     - name: Applying Snat
       command: kubectl apply -f snat.yml
 - name: GET SOME DEPLOYMENTS
-  hosts: kb-controller
+  hosts: kube-master
   gather_facts: no
   tasks:
     - name: Centos deployment
