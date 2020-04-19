@@ -131,8 +131,6 @@
     - name: Provision ACI infra
       command: acc-provision -c /root/aci-containers-config.yaml -o aci-containers.yaml -f kubernetes-1.15 -a -u aibarrio -p ijar2761
     - name: Kubernetes cluster initialization
-#      command: "kubeadm init --pod-network-cidr=1.2.192.0/23 --apiserver-advertise-address=1.2.128.11"
-#      command: "kubeadm init --pod-network-cidr 1.2.192.0/23 --apiserver-advertise-address 1.2.128.11 --service-cidr 1.2.131.0/24"
       command: "kubeadm init --pod-network-cidr 1.1.192.0/23 --apiserver-advertise-address 1.1.128.11 --service-cidr 1.1.131.0/24 --ignore-preflight-errors=CRI"
     - name: Variables entorno
       command: "{{item}}"
@@ -140,7 +138,7 @@
         - mkdir -p /root/.kube
         - cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
         - chown 0:0 /root/.kube/config
-#        - kubectl taint nodes --all node-role.kubernetes.io/master-
+        - kubectl taint nodes --all node-role.kubernetes.io/master-
     - name: Get token
       shell: kubeadm token create --print-join-command
       register: kubeadm_token
