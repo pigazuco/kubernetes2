@@ -3,8 +3,6 @@
   hosts: kube-all
   gather_facts: no
   tasks:
-    - name: Disabling SE linux
-      command: setenforce 0
     - name: Disabling SE linux permanent
       command: sed -i --follow-symlinks s/SELINUX=enforcing/SELINUX=disabled/g /etc/sysconfig/selinux
     - name: Disable subscription
