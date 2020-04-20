@@ -1,5 +1,7 @@
 apiVersion: aci.snat/v1
 kind: SnatPolicy
+metadata:
+  name: snatpolicy
 spec:
   snatIp:
     - 1.99.99.99
