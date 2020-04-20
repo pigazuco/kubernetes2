@@ -1,6 +1,6 @@
 ---
 - name: DEPLOY KUBERNETES
-  hosts: kube-master
+  hosts: kube-all
   gather_facts: no
   vars:
     kubernetes_version: "1.15.11" # 1.15.11
