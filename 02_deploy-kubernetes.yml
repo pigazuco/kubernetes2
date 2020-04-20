@@ -65,7 +65,7 @@
       command: yum -y localinstall /root/acc-provision-4.2.2.1-23.el7.x86_64.rpm
     - name: Copy aci-containers-config.yaml
       copy:
-        src: /root/kubernetes/aci-containers-config.yaml
+        src: /root/kubernetes2/aci-containers-config.yaml
         dest: /root/aci-containers-config.yaml
     - name: Provision ACI infra
       command: acc-provision -c /root/aci-containers-config.yaml -o aci-containers.yaml -f kubernetes-1.15 -a -u aibarrio -p ijar2761
@@ -92,7 +92,7 @@
       command: kubectl apply -f aci-containers.yaml
     - name: Copy snat.yml
       copy:
-        src: /root/kubernetes/snat.yml
+        src: /root/kubernetes2/snat.yml
         dest: /root/snat.yml
     - name: Applying Snat
       command: kubectl apply -f snat.yml
