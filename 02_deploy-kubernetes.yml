@@ -101,7 +101,7 @@
   hosts: kube-master
   gather_facts: no
   tasks:
-    - name: Centos deployment
-      get_url:
-        url: http://registry.mad.lab/kube/deployment-centos.yml
+    - name: Copy aci-containers-config.yaml
+      copy:
+        src: /root/kubernetes2/deployment-centos.yml
         dest: /root/deployment-centos.yml
