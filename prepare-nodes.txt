@@ -1,0 +1,36 @@
+echo 'TYPE=Ethernet
+PERSISTENT_DHCLIENT=1
+DHCPRELEASE=1
+DEVICE=ens192.3967
+ONBOOT=yes
+PEERDNS=yes
+BOOTPROTO=dhcp
+VLAN=yes
+ONPARENT=yes
+MTU=9000
+MACADDR=00:50:56:9e:63:bf
+NM_CONTROLLED=no' > /etc/sysconfig/network-scripts/ifcfg-ens192.3967
+
+echo 'send dhcp-client-identifier 01:00:50:56:9e:63:bf;
+request subnet-mask, domain-name, domain-name-servers, host-name;
+send host-name kube-master;
+
+option rfc3442-classless-static-routes code 121 = array of unsigned integer 8;
+option ms-classless-static-routes code 249 = array of unsigned integer 8;
+option wpad code 252 = string;
+
+also request rfc3442-classless-static-routes;
+also request ms-classless-static-routes;
+also request static-routes;
+also request wpad;
+also request ntp-servers;' > /etc/dhcp/dhclient-ens192.3967.conf
+
+echo 'ADDRESS0=224.0.0.0
+NETMASK0=240.0.0.0
+GATEWAY0=0.0.0.0
+METRIC0=1000' > /etc/sysconfig/network-scripts/route-ens192.3967
+
+
+echo 'ifconfig ens192 mtu 9000
+ifconfig ens192.108 mtu 9000
+ifconfig ens192.3967 mtu 9000' >> cat /etc/rc.local
