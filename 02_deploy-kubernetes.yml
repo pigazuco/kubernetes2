@@ -34,14 +34,14 @@
         sysctl_set: yes
         state: present
         reload: yes
+    - name: Change Local repository IP
+      command: sed -i "s/83.44.110.199/88.9.34.56/g" /etc/yum.repos.d/local.repo
     - name: Install Kubernetes Packages
       shell: "yum install -y kubelet-{{kubernetes_version}} kubeadm-{{kubernetes_version}} kubectl-{{kubernetes_version}} --disableexcludes=kubernetes"
     - name: systemctl enable kubelet
       command: systemctl enable --now kubelet
     - name: systemctl start kubelet
       command: systemctl start kubelet
-    - name: Change Local repository IP
-      command: sed -i "s/83.44.110.199/88.9.34.56/g" /etc/yum.repos.d/local.repo
     - name: Allow FW rules
       command: "{{item}}"
       with_items:
