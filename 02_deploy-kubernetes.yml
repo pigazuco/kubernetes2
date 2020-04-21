@@ -75,7 +75,8 @@
     - name: Provision ACI infra
       command: acc-provision -c /root/aci-containers-config.yaml -o aci-containers.yaml -f kubernetes-1.15 -a -u aibarrio -p ijar2761
     - name: Kubernetes cluster initialization
-      command: "kubeadm init --pod-network-cidr 1.1.192.0/23 --apiserver-advertise-address 1.1.128.10 --service-cidr 1.1.131.0/24 --ignore-preflight-errors=CRI"
+#      command: "kubeadm init --pod-network-cidr 1.1.192.0/23 --apiserver-advertise-address 1.1.128.10 --service-cidr 1.1.131.0/24 --ignore-preflight-errors=CRI"
+      command: "kubeadm init --pod-network-cidr 1.1.192.0/23 --apiserver-advertise-address 1.1.128.10"
     - name: Variables entorno
       command: "{{item}}"
       with_items:
