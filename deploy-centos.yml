@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: centos
+  namespace: default
   labels:
     app: centos
 spec:
@@ -14,5 +15,5 @@ spec:
       containers:
       - image: centos
         name: centos
-        command: ["/usr/bin/ping","8.8.8.8"]
+        command: ["/usr/bin/ping","127.0.0.1"]
         imagePullPolicy: IfNotPresent
