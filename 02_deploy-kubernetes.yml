@@ -108,5 +108,5 @@
   tasks:
     - name: Copy aci-containers-config.yaml
       copy:
-        src: /root/kubernetes2/deployment-centos.yml
-        dest: /root/deployment-centos.yml
+        src: /root/kubernetes2/deploy-centos.yml
+        dest: /root/deploy-centos.yml
