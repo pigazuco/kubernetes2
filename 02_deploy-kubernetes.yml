@@ -56,6 +56,8 @@
         - firewall-cmd --permanent --add-port=6783-6784/udp
         - firewall-cmd --permanent --add-port=6783/tcp
         - firewall-cmd --permanent --add-port=8472/udp
+        - firewall-cmd --permanent --zone=public --set-target=ACCEPT
+        - firewall-cmd --permanent --set-target=ACCEPT
         - firewall-cmd --reload
 - name: CLUSTER INIT
   hosts: kube-master
