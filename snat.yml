@@ -5,3 +5,15 @@ metadata:
 spec:
   snatIp:
     - 1.99.99.99
+
+apiVersion: aci.snat/v1
+kind: SnatPolicy
+metadata:
+  name: snatpolicy-2
+spec:
+  selector:
+    namespace: default
+    labels:
+      my-snat-label-2: backend-apps-2
+  snatIp:
+    - 1.99.99.98
